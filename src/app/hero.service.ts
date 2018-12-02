@@ -10,6 +10,11 @@ import { MessageService } from './message.service'
 export class HeroService {
 
   constructor(private messageService: MessageService) { }
+  getHero(id: number) {
+    this.messageService.add(`HeroSerice: fetched hero id =${id}`)
+
+    return of(HEROES.find(hero => hero.id === id));
+  }
 
   getHeroes(): Observable<Hero[]> {
     this.messageService.add('Hero Service: fetched heroes');
